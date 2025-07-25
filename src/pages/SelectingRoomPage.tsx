@@ -1,6 +1,10 @@
 import GlobalHeader from "@/components/GlobalHeader";
 import TextBox from "@/components/TextBox";
 import { selectingRoomTextBox } from "@/constants";
+import PuzzleRed1 from "@/assets/puzzle/puzzle-red1.svg?react";
+import PuzzleGreen from "@/assets/puzzle/puzzle-green1.svg?react";
+import PuzzleViolet from "@/assets/puzzle/puzzle-violet1.svg?react";
+import PuzzleYellow from "@/assets/puzzle/puzzle-yellow1.svg?react";
 
 const SelectingRoomPage = () => {
   return (
@@ -23,6 +27,12 @@ const SelectingRoomPage = () => {
       >
         방 새로고침
       </button>
+
+      {/* 퍼즐 */}
+      <PuzzleRed1 className="fixed top-394 left-63 w-43" />
+      <PuzzleGreen className="fixed top-429 left-159 w-71" />
+      <PuzzleViolet className="fixed top-404 right-140 w-71" />
+      <PuzzleYellow className="fixed top-385 right-62 w-43" />
     </div>
   );
 };
