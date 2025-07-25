@@ -7,7 +7,7 @@ const GlobalHeader = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="flex w-[70%] py-14 justify-between items-center shrink-0">
+    <div className="fixed top-0 flex w-[70%] py-14 justify-between items-center shrink-0">
       <LogoText
         onClick={() => navigate("/")}
         className="hover:cursor-pointer"
