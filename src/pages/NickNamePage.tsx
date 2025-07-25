@@ -1,27 +1,35 @@
-import { useState } from 'react';
-import GlobalHeader from '@/components/GlobalHeader';
-import EmojiCard from '@/components/EmojiCard';
-import TextBox from '@/components/TextBox';
-import NicknameInput from '@/components/NicknameInput';
-import GlobalButton from '@/components/GlobalButton';
-import type { EmojiCardType } from '@/types';
-
-const sampleData: EmojiCardType = {
-  id: 0,
-  title: '방이름방이름방이름...',
-  participants: 10,
-  isReady: false,
-  emoji: '🦊',
-  gradient: {
-    from: '#A3EDFF',
-    to: '#4C7EDE',
-  },
-};
+import { useState } from "react";
+import GlobalHeader from "@/components/GlobalHeader";
+import EmojiCard from "@/components/EmojiCard";
+import TextBox from "@/components/TextBox";
+import NicknameInput from "@/components/NicknameInput";
+import GlobalButton from "@/components/GlobalButton";
+import { useUserStore } from "@/stores/UserStore";
+import { useShallow } from "zustand/shallow";
+import { useRoomStore } from "@/stores/roomStore";
+import { useNavigate } from "react-router-dom";
 
 const NickNamePage = () => {
-  const [nickname, setNickname] = useState('');
+  const navigate = useNavigate();
+  const [nickname, setNickname] = useState("");
   const isValid = nickname.trim().length > 0;
   //   const [isExisting, setIsExisting] = useState(false);
+
+  const { seNickname } = useUserStore(
+    useShallow((state) => ({
+      seNickname: state.seNickname,
+    }))
+  );
+  const { id, title, participants, isReady, emoji, gradient } = useRoomStore(
+    useShallow((state) => ({
+      id: state.id,
+      title: state.title,
+      participants: state.participants,
+      isReady: state.isReady,
+      emoji: state.emoji,
+      gradient: state.gradient,
+    }))
+  );
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen gap-[64px] px-8 bg-white">
@@ -33,7 +41,11 @@ const NickNamePage = () => {
       />
 
       <div className="flex gap-[0px] items-start">
-        <EmojiCard content={sampleData} index={0} currentIndex={0} />
+        <EmojiCard
+          content={{ id, title, participants, isReady, emoji, gradient }}
+          index={0}
+          currentIndex={0}
+        />
 
         <div className="flex flex-col ml-300 items-start gap-[24px] self-center">
           <h1 className="text-center text-black font-semibold text-[40px] leading-normal font-['Noto Sans']">
@@ -47,7 +59,10 @@ const NickNamePage = () => {
           <GlobalButton
             text="입장하기"
             isActive={isValid}
-            onClick={() => console.log('입장:', nickname)}
+            onClick={() => {
+              seNickname(nickname);
+              navigate("/explainer-intro");
+            }}
           />
         </div>
       </div>

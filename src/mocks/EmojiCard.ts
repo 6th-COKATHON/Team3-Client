@@ -1,8 +1,8 @@
 export const EmojiCardsMockData = [
   {
     id: 0,
-    title: "방이름방이름방이름...",
-    participants: 10,
+    title: "힌트는 여기까지",
+    participants: 1,
     isReady: false,
     emoji: "❓",
     gradient: {
@@ -12,8 +12,8 @@ export const EmojiCardsMockData = [
   },
   {
     id: 1,
-    title: "방이름방이름방이름...",
-    participants: 10,
+    title: "조각 수사반",
+    participants: 3,
     isReady: false,
     emoji: "❓",
     gradient: {
@@ -23,8 +23,8 @@ export const EmojiCardsMockData = [
   },
   {
     id: 2,
-    title: "방이름방이름방이름...",
-    participants: 10,
+    title: "미술시간 탈주자들",
+    participants: 2,
     isReady: false,
     emoji: "❓",
     gradient: {
@@ -34,8 +34,8 @@ export const EmojiCardsMockData = [
   },
   {
     id: 3,
-    title: "방이름방이름방이름...",
-    participants: 10,
+    title: "진실은 이미지 너머에",
+    participants: 4,
     isReady: false,
     emoji: "❓",
     gradient: {
@@ -45,8 +45,8 @@ export const EmojiCardsMockData = [
   },
   {
     id: 4,
-    title: "방이름방이름방이름...",
-    participants: 10,
+    title: "설명 잘하면 칭찬해줌",
+    participants: 3,
     isReady: false,
     emoji: "❓",
     gradient: {

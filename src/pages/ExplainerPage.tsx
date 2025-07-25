@@ -1,8 +1,11 @@
 import GlobalButton from "@/components/GlobalButton";
 import GlobalHeader from "@/components/GlobalHeader";
 import TextBox from "@/components/TextBox";
+import { useRoomStore } from "@/stores/roomStore";
 import generateRandomPolygon from "@/utils/generateRandomPolygon";
 import { useEffect, useRef, useState } from "react";
+import { useShallow } from "zustand/shallow";
+import { useNavigate } from "react-router-dom";
 
 const ExplainerPage = () => {
   const imageUrl =
@@ -12,6 +15,13 @@ const ExplainerPage = () => {
   const [index, setIndex] = useState(0);
   const [explain, setExplain] = useState("");
   const [activeButton, setActiveButton] = useState(false);
+  const navigate = useNavigate();
+
+  const { setRoomExplain } = useRoomStore(
+    useShallow((state) => ({
+      setRoomExplain: state.setRoomExplain,
+    }))
+  );
 
   const handleExplainChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setExplain(e.target.value);
@@ -71,7 +81,10 @@ const ExplainerPage = () => {
             </div>
             <GlobalButton
               text="제출하기"
-              onClick={() => console.log("제출하기 버튼")}
+              onClick={() => {
+                setRoomExplain(explain);
+                navigate("/result");
+              }}
               isActive={activeButton}
               colorSub
             />

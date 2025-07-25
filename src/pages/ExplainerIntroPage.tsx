@@ -1,7 +1,19 @@
-import GlobalHeader from '@/components/GlobalHeader';
-import TextBox from '@/components/TextBox';
+import GlobalHeader from "@/components/GlobalHeader";
+import TextBox from "@/components/TextBox";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const ExplainerIntroPage = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      navigate("/explainer");
+    }, 1500);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <div className="min-h-screen flex flex-col items-center bg-gradient-to-b from-[#FFF6FA] to-[#FFEFF5]">
       <GlobalHeader />

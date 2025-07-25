@@ -6,8 +6,11 @@ import PuzzleGreen from "@/assets/puzzle/puzzle-green1.svg?react";
 import PuzzleViolet from "@/assets/puzzle/puzzle-violet1.svg?react";
 import PuzzleYellow from "@/assets/puzzle/puzzle-yellow1.svg?react";
 import EmojiCardList from "@/components/EmojiCardList";
+import { useNavigate } from "react-router-dom";
 
 const SelectingRoomPage = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="relative flex w-dvw h-dvh flex-col pt-70 items-center bg-linear-[180deg,#FFF_0%,#FFE1E8_100%] overflow-hidden">
       {/* 헤더 */}
@@ -24,7 +27,9 @@ const SelectingRoomPage = () => {
       {/* 버튼 */}
       <div className="relative z-20 inline-flex items-center gap-40">
         <button
-          onClick={() => console.log("방 만들기 클릭")}
+          onClick={() => {
+            navigate("/make-room");
+          }}
           className="relative z-20 mt-32 flex w-300 h-40 justify-center items-center shrink-0 rounded-[10px] bg-sub_40 shadow-[0px_4px_4px_0px_rgba(159,198,255,0.25)]"
         >
           방 만들기
