@@ -7,7 +7,7 @@ const TextBox = () => {
 
   return (
     <div className="flex flex-col items-center gap-16 px-[259px] py-[69.5px] w-[1200px] rounded-[20px] border border-[#8B2FFF] bg-white">
-      <h2 className="text-[32px] font-medium text-center text-black">
+      <h2 className="text-[40px] font-semibold text-center text-black">
         {dummyData.title}
       </h2>
       <p className="text-[16px] font-medium text-center text-black whitespace-pre-line">
