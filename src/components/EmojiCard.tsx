@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { fetchRandomEmoji } from "@/api/fetchEmoji";
-import type { EmojiCardType } from "@/types";
+import type { EmojiCardType } from "@/types/emojiCard";
 
 interface EmojiCardProps {
   content: EmojiCardType;
