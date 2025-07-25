@@ -9,7 +9,7 @@ const GuesserResultPage = () => {
       <GlobalHeader />
 
       {/* 안내 텍스트 박스 */}
-      <div className="w-[1200px] rounded-[20px] border px-259 py-32 border-[#C79AFF] bg-[#FBF8FF] flex flex-col items-center">
+      <div className="mt-80 w-[1200px] rounded-[20px] border px-259 py-32 border-[#C79AFF] bg-[#FBF8FF] flex flex-col items-center">
         <h2 className="text-[40px] font-bold text-center text-[#344054]">
           정답 공개
         </h2>
