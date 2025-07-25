@@ -1,25 +1,25 @@
-import { useState } from 'react';
-import GlobalHeader from '@/components/GlobalHeader';
-import EmojiCard from '@/components/EmojiCard';
-import TextBox from '@/components/TextBox';
-import NicknameInput from '@/components/NicknameInput';
-import GlobalButton from '@/components/GlobalButton';
-import type { EmojiCardType } from '@/types';
+import { useState } from "react";
+import GlobalHeader from "@/components/GlobalHeader";
+import EmojiCard from "@/components/EmojiCard";
+import TextBox from "@/components/TextBox";
+import NicknameInput from "@/components/NicknameInput";
+import GlobalButton from "@/components/GlobalButton";
+import type { EmojiCardType } from "@/types/emojiCard";
 
 const sampleData: EmojiCardType = {
   id: 0,
-  title: '방이름방이름방이름...',
+  title: "방이름방이름방이름...",
   participants: 10,
   isReady: false,
-  emoji: '🦊',
+  emoji: "🦊",
   gradient: {
-    from: '#A3EDFF',
-    to: '#4C7EDE',
+    from: "#A3EDFF",
+    to: "#4C7EDE",
   },
 };
 
 const NickNamePage = () => {
-  const [nickname, setNickname] = useState('');
+  const [nickname, setNickname] = useState("");
   const isValid = nickname.trim().length > 0;
   //   const [isExisting, setIsExisting] = useState(false);
 
@@ -47,7 +47,7 @@ const NickNamePage = () => {
           <GlobalButton
             text="입장하기"
             isActive={isValid}
-            onClick={() => console.log('입장:', nickname)}
+            onClick={() => console.log("입장:", nickname)}
           />
         </div>
       </div>
