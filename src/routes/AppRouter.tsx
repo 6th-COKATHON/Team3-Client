@@ -1,12 +1,8 @@
-import { Route, Routes } from 'react-router-dom';
-import LandingPage from '@/pages/LandingPage';
-import NickNamePage from '@/pages/NickNamePage';
-import GuesserPage from '@/pages/GuesserPage';
-import GuesserResultPage from '@/pages/GuesserResultPage';
-import SelectingRoomPage from "@/pages/SelectingRoomPage";
 import { Route, Routes } from "react-router-dom";
 import NickNamePage from "@/pages/NickNamePage";
 import GuesserPage from "@/pages/GuesserPage";
+import GuesserResultPage from "@/pages/GuesserResultPage";
+import SelectingRoomPage from "@/pages/SelectingRoomPage";
 import ExplainerPage from "@/pages/ExplainerPage";
 
 const AppRouter = () => {
