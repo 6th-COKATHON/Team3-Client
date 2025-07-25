@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 import { fetchRandomEmoji } from "@/api/fetchEmoji";
 import type { EmojiCardType } from "@/types";
+import { useNavigate } from "react-router-dom";
+import { useRoomStore } from "@/stores/roomStore";
+import { useShallow } from "zustand/shallow";
 
 interface EmojiCardProps {
   content: EmojiCardType;
@@ -9,7 +12,14 @@ interface EmojiCardProps {
 }
 
 const EmojiCard = ({ content, index, currentIndex }: EmojiCardProps) => {
+  const navigate = useNavigate();
   const [emoji, setEmoji] = useState<string>(content.emoji);
+
+  const { setTitle } = useRoomStore(
+    useShallow((state) => ({
+      setTitle: state.setTitle,
+    }))
+  );
 
   useEffect(() => {
     const getEmoji = async () => {
@@ -28,7 +38,10 @@ const EmojiCard = ({ content, index, currentIndex }: EmojiCardProps) => {
 
   return (
     <div
-      onClick={() => console.log("방으로 들어가기")}
+      onClick={() => {
+        setTitle(content.title);
+        navigate("/nickname");
+      }}
       className="absolute transition-all duration-500 ease-out cursor-pointer flex flex-col justify-end w-260 h-270 px-[20px] pt-[20px] pb-[30px] rounded-[20px]"
       style={{
         background: `linear-gradient(180deg, ${content.gradient.from} 0%, ${content.gradient.to} 100%)`,

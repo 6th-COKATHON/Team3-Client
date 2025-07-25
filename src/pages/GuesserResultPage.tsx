@@ -1,9 +1,20 @@
-import GlobalHeader from '@/components/GlobalHeader';
-import GlobalButton from '@/components/GlobalButton';
-import OutlinedButton from '@/components/OutlinedButton';
-import LabelBadge from '@/components/LabelBadge';
+import GlobalHeader from "@/components/GlobalHeader";
+import GlobalButton from "@/components/GlobalButton";
+import OutlinedButton from "@/components/OutlinedButton";
+import LabelBadge from "@/components/LabelBadge";
+import { useNavigate } from "react-router-dom";
+import { useRoomStore } from "@/stores/roomStore";
+import { useShallow } from "zustand/shallow";
 
 const GuesserResultPage = () => {
+  const navigate = useNavigate();
+
+  const { selectedImgUrl } = useRoomStore(
+    useShallow((state) => ({
+      selectedImgUrl: state.selectedImgUrl,
+    }))
+  );
+
   return (
     <div className="flex flex-col items-center w-full pb-90 px-120 min-h-screen bg-white gap-48">
       <GlobalHeader />
@@ -28,7 +39,10 @@ const GuesserResultPage = () => {
               <LabelBadge text="추리자 선택 이미지" bgColor="bg-pri_10" />
             </div>
             <img
-              src="/sample.png"
+              src={
+                selectedImgUrl ||
+                "https://mblogthumb-phinf.pstatic.net/20160728_92/armada0219_1469711213004uoPw5_JPEG/Promotion-Vinyl-1-25-W-x2-H-m-Photography-Background-Nice-Ancient-font-b-Egypt-b.jpg?type=w800"
+              }
               alt="추리자 선택 이미지"
               className="object-cover w-full h-full"
             />
@@ -40,7 +54,7 @@ const GuesserResultPage = () => {
               <LabelBadge text="원본 이미지" />
             </div>
             <img
-              src="/sample.png"
+              src="https://i.namu.wiki/i/_zkUC15cUIx5xamljbud3ofqlpK5u7ahi5Vj2tNrWkUYbbx8Wv5MtjDXcg_96E-ukz7wGlPjsfnnWNhCkTl1bQ.webp"
               alt="정답 이미지"
               className="object-cover w-full h-full"
             />
@@ -52,11 +66,11 @@ const GuesserResultPage = () => {
       <div className="flex gap-48 mt-10">
         <OutlinedButton
           text="결과 공유하기"
-          onClick={() => console.log('공유하기')}
+          onClick={() => alert("결과 링크가 복사되었습니다.")}
         />
         <GlobalButton
           text="다시하기"
-          onClick={() => console.log('다시하기')}
+          onClick={() => navigate("/guesser-intro")}
           isActive={true}
         />
       </div>

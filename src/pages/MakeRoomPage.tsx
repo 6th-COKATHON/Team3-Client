@@ -1,11 +1,21 @@
-import TextBox from '@/components/TextBox';
-import GlobalHeader from '@/components/GlobalHeader';
-import GlobalButton from '@/components/GlobalButton';
-import { useState } from 'react';
-import RoomnameInput from '@/components/RoomnameInput';
+import TextBox from "@/components/TextBox";
+import GlobalHeader from "@/components/GlobalHeader";
+import GlobalButton from "@/components/GlobalButton";
+import { useState } from "react";
+import RoomnameInput from "@/components/RoomnameInput";
+import { useShallow } from "zustand/shallow";
+import { useNavigate } from "react-router-dom";
+import { useRoomStore } from "@/stores/roomStore";
 
 const MakeRoomPage = () => {
-  const [roomname, setRoomname] = useState('');
+  const navigate = useNavigate();
+  const [roomname, setRoomname] = useState("");
+
+  const { setTitle } = useRoomStore(
+    useShallow((state) => ({
+      setTitle: state.setTitle,
+    }))
+  );
 
   const isValid = roomname.trim().length > 0;
 
@@ -26,7 +36,8 @@ const MakeRoomPage = () => {
           text="생성하기"
           isActive={isValid}
           onClick={() => {
-            console.log('방 생성:', roomname);
+            setTitle(roomname);
+            navigate("/nickname");
           }}
         />
       </div>
