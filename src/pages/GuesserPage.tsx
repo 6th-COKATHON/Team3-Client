@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useMemo, useState } from "react";
 import GlobalHeader from "@/components/GlobalHeader";
 import IndexBadge from "@/components/IndexBadge";
 import GlobalButton from "@/components/GlobalButton";
@@ -14,15 +14,14 @@ const imgs = [
   "https://images.mypetlife.co.kr/content/uploads/2022/12/14085728/AdobeStock_190865199-1024x683.jpeg",
 ];
 
+type ExplainData = { name: string; text: string };
+
 const GuesserPage = () => {
   const navigate = useNavigate();
 
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
   const isActive = selectedIndex !== null;
-
-  type ExplainData = { name: string; text: string };
-  let data: ExplainData[] = [];
 
   const {
     setSelectedImgUrl,
@@ -49,14 +48,25 @@ const GuesserPage = () => {
     }))
   );
 
-  useEffect(() => {
-    data = [
+  // useMemo를 사용하여 store 값들이 변경될 때마다 data를 재계산
+  const data: ExplainData[] = useMemo(
+    () => [
       { name: nickname, text: roomExplain },
       { name: user2, text: roomExplain2 },
       { name: user3, text: roomExplain3 },
       { name: user4, text: roomExplain4 },
-    ];
-  }, []);
+    ],
+    [
+      nickname,
+      user2,
+      user3,
+      user4,
+      roomExplain,
+      roomExplain2,
+      roomExplain3,
+      roomExplain4,
+    ]
+  );
 
   return (
     <div className="flex flex-col items-center w-full pb-90 px-120 min-h-screen bg-white gap-48">
