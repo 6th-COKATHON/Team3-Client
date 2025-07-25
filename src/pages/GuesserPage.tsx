@@ -13,7 +13,7 @@ const GuesserPage = () => {
       <GlobalHeader />
 
       {/* 안내 텍스트 박스 */}
-      <div className="w-[1200px] rounded-[20px] border px-259 py-32 border-[#C79AFF] bg-[#FBF8FF] gap-16 flex flex-col items-center ">
+      <div className="w-[1200px] rounded-[20px] border px-259 py-32 border-[#C79AFF] bg-[#FBF8FF] gap-16 flex flex-col items-center mt-80">
         <h2 className="text-[40px] font-bold text-center text-[#344054]">
           추리하실 원본 이미지를 선택하세요!
         </h2>
