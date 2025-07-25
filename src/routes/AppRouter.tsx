@@ -1,11 +1,11 @@
-import LandingPage from "@/pages/LandingPage";
+import SelectingRoomPage from "@/pages/SelectingRoomPage";
 import { Route, Routes } from "react-router-dom";
 
 const AppRouter = () => {
   return (
     <>
       <Routes>
-        <Route path="/" element={<LandingPage />} />
+        <Route path="/" element={<SelectingRoomPage />} />
       </Routes>
     </>
   );
