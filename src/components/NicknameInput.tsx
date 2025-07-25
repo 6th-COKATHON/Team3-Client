@@ -1,11 +1,23 @@
-import { useState } from "react";
+import { useState, useEffect } from 'react';
 
 interface NicknameInputProps {
+  value: string;
+  onChange: (value: string) => void;
   isExisting: boolean;
 }
 
-const NicknameInput = ({ isExisting }: NicknameInputProps) => {
-  const [nickname, setNickname] = useState("");
+const NicknameInput = ({ value, onChange, isExisting }: NicknameInputProps) => {
+  const [nickname, setNickname] = useState(value);
+
+  useEffect(() => {
+    setNickname(value);
+  }, [value]);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newValue = e.target.value;
+    setNickname(newValue);
+    onChange(newValue);
+  };
 
   return (
     <div className="flex w-424 flex-col items-start gap-8">
@@ -17,7 +29,7 @@ const NicknameInput = ({ isExisting }: NicknameInputProps) => {
           <input
             value={nickname}
             maxLength={25}
-            onChange={(e) => setNickname(e.target.value)}
+            onChange={handleChange}
             className="text-title_body_20 text-sm self-stretch outline-0"
           />
         </div>
