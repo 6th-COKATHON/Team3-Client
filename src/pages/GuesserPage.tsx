@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import GlobalHeader from '@/components/GlobalHeader';
 import IndexBadge from '@/components/IndexBadge';
 import GlobalButton from '@/components/GlobalButton';
 
@@ -9,6 +10,8 @@ const GuesserPage = () => {
 
   return (
     <div className="flex flex-col items-center w-full pb-90 px-120 min-h-screen bg-white gap-48">
+      <GlobalHeader />
+
       {/* 안내 텍스트 박스 */}
       <div className="w-[1200px] rounded-[20px] border px-259 py-32 border-[#C79AFF] bg-[#FBF8FF] gap-16 flex flex-col items-center ">
         <h2 className="text-[40px] font-bold text-center text-[#344054]">

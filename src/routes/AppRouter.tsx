@@ -4,6 +4,7 @@ import GuesserPage from "@/pages/GuesserPage";
 import GuesserResultPage from "@/pages/GuesserResultPage";
 import SelectingRoomPage from "@/pages/SelectingRoomPage";
 import ExplainerPage from "@/pages/ExplainerPage";
+import MakeRoomPage from '@/pages/MakeRoomPage';
 
 const AppRouter = () => {
   return (
@@ -14,6 +15,7 @@ const AppRouter = () => {
         <Route path="/guesser" element={<GuesserPage />} />
         <Route path="/explainer" element={<ExplainerPage />} />
         <Route path="/guesser-result" element={<GuesserResultPage />} />
+        <Route path="/make-room" element={<MakeRoomPage />} />
       </Routes>
     </>
   );
